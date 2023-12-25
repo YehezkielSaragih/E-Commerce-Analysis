@@ -32,4 +32,4 @@ The purpose of this project is to analyze the overall E-Commerce Public Dataset.
     ```
 
 ## Note
-I know this project really simple and doesn't explaine much, but you can leave a feedback. Please feel free to leave comments or critism and suggestions on areas where I can improve. Your input is greatly appreciated.
+I know this project really simple and doesn't explain much, but you can leave a feedback. Please feel free to leave comments or critism and suggestions on areas where I can improve. Your input is greatly appreciated.
