@@ -1,7 +1,5 @@
 # E-Commerce-Analysis
  Dicoding-Proyek-Analisis-Data-dengan-Python
-
- ## Description
 This project containts E-Commerce-Public-Dataset. 
 The purpose of this project is to analyze the overall E-Commerce Public Dataset.
 
@@ -16,7 +14,7 @@ The purpose of this project is to analyze the overall E-Commerce Public Dataset.
 1. Clone repository 
 
    ```shell
-   git clone https://github.com/YehezkielSaragih/
+   git clone https://github.com/YehezkielSaragih/E-Commerce-Analysis.git
    ```
 
 2. Install the necessary packages by running the following commands:
