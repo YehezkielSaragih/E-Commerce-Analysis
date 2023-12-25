@@ -84,7 +84,7 @@ def horizontal_barchart(df, n, x, y, title):
         ax.bar_label(ax.containers[i], label_type='center')
     st.pyplot(fig)
 
-all_df = pd.read_csv("data/all_dataset.csv")
+all_df = pd.read_csv("dashboard/all_dataset.csv")
 
 # Sidebar
 with st.sidebar:
