@@ -27,7 +27,7 @@ This project containts E-Commerce-Public-Dataset. The purpose of this project is
 1. Navigate to the local directory by running the following command:
 
     ```shell
-    cd streamlit run dashboard.py
+    streamlit run dashboard.py
     ```
 
 ## Note
