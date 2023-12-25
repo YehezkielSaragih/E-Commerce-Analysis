@@ -20,7 +20,6 @@ This project containts E-Commerce-Public-Dataset. The purpose of this project is
 2. Install the necessary packages by running the following commands:
 
     ```shell
-    pip install streamlit
     pip install -r requirements.txt
     ```
 
