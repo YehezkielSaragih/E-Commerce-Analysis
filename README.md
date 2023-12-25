@@ -1,7 +1,7 @@
 # E-Commerce-Analysis
-- **Dicoding-Proyek-Analisis-Data-dengan-Python**
-- This project containts E-Commerce-Public-Dataset. 
-- The purpose of this project is to analyze the overall E-Commerce Public Dataset.
+**Dicoding-Proyek-Analisis-Data-dengan-Python**
+
+This project containts E-Commerce-Public-Dataset. The purpose of this project is to analyze the overall E-Commerce Public Dataset.
 
 ## Repository Structure
 
