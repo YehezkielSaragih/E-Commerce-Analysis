@@ -25,6 +25,17 @@ def customer_sum_order_value_sorted(all_df):
         sum_order_value = ("order_value", "sum")
         ).sort_values(by = "sum_order_value", ascending = False).reset_index()
     return customer_sum_order_value_sorted
+def rfm(all_df):
+    rfm_df = all_df.groupby(by = "customer_unique_id").agg(
+        recency = ("order_purchase_timestamp", lambda x: (all_df["order_purchase_timestamp"].max() - x.max()).days),
+        frequency = ("order_id", "nunique"),
+        monetary = ("order_value", "sum")
+        ).reset_index()
+    rfm_df["recency_score"] = pd.qcut(rfm_df["recency"], 3, labels = range(3, 0, -1))
+    rfm_df["frequency_score"] = pd.qcut(rfm_df["frequency"].rank(method='first'), 3, labels = range(1, 4))
+    rfm_df["monetary_score"] = pd.qcut(rfm_df["monetary"], 3, labels = range(1, 4))
+    rfm_df["rfm_score"] = rfm_df["recency_score"].astype(int) + rfm_df["frequency_score"].astype(int) + rfm_df["monetary_score"].astype(int)
+    return rfm_df
 
 # Seller Functions
 def seller_city(all_df):
@@ -83,7 +94,12 @@ def horizontal_barchart(df, n, x, y, title):
     for i in range(0, len(ax.containers)):
         ax.bar_label(ax.containers[i], label_type='center')
     st.pyplot(fig)
-
+def histogram(df, x, nrows, ncols, index, title):
+    plt.subplot(nrows, ncols, index)
+    sns.histplot(df[x], kde=True, stat="density")
+    plt.title(title)
+    plt.show()
+    
 all_df = pd.read_csv("dashboard/all_dataset.csv")
 
 # Sidebar
@@ -97,13 +113,19 @@ with st.sidebar:
 # If Sidebar = Customer
 if genre == "Customer":
     # Initialize Data
+    rfm = rfm(all_df)
     city = customer_city(all_df)
     state = customer_state(all_df)
     count_order = customer_count_order_sorted(all_df)
     sum_order_value = customer_sum_order_value_sorted(all_df)
     # UI
     st.title("Customer Analysis")
-    st.write("This customer analysis will conclude customer state, customer city, customer order count, and customer order value.")
+    st.write("This customer analysis will conclude RFM, customer state, customer city, customer order count, and customer order value.")
+    st.header("RFM (Recency, Frequency, Monetary)")
+    histogram(rfm, "recency", 3, 1, 1, "Recency Distribution")
+    histogram(rfm, "frequency", 2, 1, 1, "Frequency Distribution")
+    histogram(rfm, "monetary", 2, 1, 1, "Monetary Distribution")
+    histogram(rfm, "rfm_score", 3, 1, 2, "RFM Score Distribution")
     col1, col2 = st.columns(2)
     with col1:
         st.header("Customer State")
