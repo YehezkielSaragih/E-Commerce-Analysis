@@ -26,8 +26,10 @@ def customer_sum_order_value_sorted(all_df):
         ).sort_values(by = "sum_order_value", ascending = False).reset_index()
     return customer_sum_order_value_sorted
 def rfm(all_df):
+    all_df['order_purchase_timestamp'] = pd.to_datetime(all_df['order_purchase_timestamp'])
+    max_purchase_timestamp = all_df['order_purchase_timestamp'].max()
     rfm_df = all_df.groupby(by = "customer_unique_id").agg(
-        recency = ("order_purchase_timestamp", lambda x: (all_df["order_purchase_timestamp"].max() - x.max()).days),
+        recency = ("order_purchase_timestamp", lambda x: (max_purchase_timestamp - x.max()).days),
         frequency = ("order_id", "nunique"),
         monetary = ("order_value", "sum")
         ).reset_index()
@@ -94,11 +96,12 @@ def horizontal_barchart(df, n, x, y, title):
     for i in range(0, len(ax.containers)):
         ax.bar_label(ax.containers[i], label_type='center')
     st.pyplot(fig)
-def histogram(df, x, nrows, ncols, index, title):
-    plt.subplot(nrows, ncols, index)
-    sns.histplot(df[x], kde=True, stat="density")
+def histogram(df, x, title):
+    fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(8, 6))
+    sns.histplot(df[x], kde=True, stat="density", ax=ax)
     plt.title(title)
-    plt.show()
+    ax.set_xlabel(None)
+    st.pyplot(fig)
     
 all_df = pd.read_csv("dashboard/all_dataset.csv")
 
@@ -120,12 +123,7 @@ if genre == "Customer":
     sum_order_value = customer_sum_order_value_sorted(all_df)
     # UI
     st.title("Customer Analysis")
-    st.write("This customer analysis will conclude RFM, customer state, customer city, customer order count, and customer order value.")
-    st.header("RFM (Recency, Frequency, Monetary)")
-    histogram(rfm, "recency", 3, 1, 1, "Recency Distribution")
-    histogram(rfm, "frequency", 2, 1, 1, "Frequency Distribution")
-    histogram(rfm, "monetary", 2, 1, 1, "Monetary Distribution")
-    histogram(rfm, "rfm_score", 3, 1, 2, "RFM Score Distribution")
+    st.write("This customer analysis will conclude customer state, customer city, customer order count, customer order value and RFM.")
     col1, col2 = st.columns(2)
     with col1:
         st.header("Customer State")
@@ -137,6 +135,11 @@ if genre == "Customer":
     horizontal_barchart(count_order, 10, "count_order", "customer_unique_id", "Customers Based on Order Count")
     st.header("Customer Order Value")
     horizontal_barchart(sum_order_value, 10, "sum_order_value", "customer_unique_id", "Customers Based on Order Value")
+    st.header("RFM (Recency, Frequency, Monetary)")
+    histogram(rfm, "recency", "Recency Distribution")
+    histogram(rfm, "frequency", "Frequency Distribution")
+    histogram(rfm, "monetary", "Monetary Distribution")
+    histogram(rfm, "rfm_score", "RFM Score Distribution")
 
 if genre == "Seller":
     # Initialize Data
