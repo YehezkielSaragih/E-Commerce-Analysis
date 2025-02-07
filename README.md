@@ -4,8 +4,7 @@
 This project analyzes an E-Commerce Public Dataset to uncover insights into customer behavior, sales trends, and product performance through an interactive Streamlit dashboard.
 
 ## 📊 Dashboard
-Explore the analysis through the **Streamlit dashboard**:
-👉 [Live Dashboard](https://dicoding-e-commerce-analysis.streamlit.app/)
+Explore the analysis through the [Streamlit dashboard](https://dicoding-e-commerce-analysis.streamlit.app/).
 
 ### 🖼️ Dashboard Preview
 ![Dashboard Preview](https://github.com/YehezkielSaragih/E-Commerce-Analysis/blob/main/ECommerceDashboard_SamplePage.png)
