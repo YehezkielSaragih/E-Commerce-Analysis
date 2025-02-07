@@ -10,13 +10,13 @@ Explore the analysis through the **Streamlit dashboard**:
 ### 🖼️ Dashboard Preview
 ![Dashboard Preview](https://github.com/YehezkielSaragih/E-Commerce-Analysis/blob/main/ECommerceDashboard_SamplePage.png)
 
-## Repository Structure
+## 📂 Repository Structure
 
 - **/dashboard**: contain simple streamlit code
 - **/data**: contains dataset of E-Commerce Public Dataset
 - **notebook.ipynb**: notebook used for analyzing the dataset
 
-## How To Install
+## 🛠️ How To Install
 
 1. Clone repository 
 
@@ -30,12 +30,12 @@ Explore the analysis through the **Streamlit dashboard**:
     pip install -r requirements.txt
     ```
 
-## Usage
+## 🚀 Usage
 1. Navigate to the local directory by running the following command:
 
     ```shell
     streamlit run dashboard/dashboard.py
     ```
 
-## Note
+## 💡 Note
 I know this project really simple and doesn't explain much, but you can leave a feedback. Please feel free to leave comments or critism and suggestions on areas where I can improve. Your input is greatly appreciated.
