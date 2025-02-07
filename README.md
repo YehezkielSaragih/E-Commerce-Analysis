@@ -1,7 +1,7 @@
 # E-Commerce-Analysis
 **Dicoding-Proyek-Analisis-Data-dengan-Python**
 
-This project focuses on analyzing an E-Commerce Public Dataset to uncover insights into customer behavior, sales trends, and product performance. The analysis is presented through an interactive Streamlit dashboard.
+This project analyzes an E-Commerce Public Dataset to uncover insights into customer behavior, sales trends, and product performance through an interactive Streamlit dashboard.
 
 ## 📊 Dashboard
 Explore the analysis through the **Streamlit dashboard**:
